@@ -177,10 +177,7 @@ class RazorMovement:
 
     def __init__(self, image_path):
         object_image = pygame.image.load(image_path)
-
         object_image = pygame.transform.scale(object_image, (100, 350) )
-        #scale up
-        #self.image = pygame.transform.scale2x(object_image)
         self.image = object_image
     
 
@@ -188,7 +185,6 @@ class RazorMovement:
         razor_height = [50, 150, 250, 350]
         random_razor_pos = random.choice(razor_height)
         razor = self.image.get_rect(midtop = (1000,random_razor_pos) )
-        #top_razor = self.image.get_rect(midbottom = (1000, random_razor_pos - 300))
         return razor
     
     def move_razors(self, razors):
@@ -248,8 +244,3 @@ quit()
 
 
 
-
-#pygame.draw.rect(game_screen, RED_COLOUR, [380, 380, 20, 20])
-#pygame.draw.circle(game_screen, GREEN_COLOUR, (390, 370), 10)
-
-#game_screen.blit(player_image, (375,375))
