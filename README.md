@@ -5,4 +5,4 @@ Requires python3 and uses pygame 2.0.0.dev6
 
 Game begins looking like this when ran: 
 
-<img src="images/openingScreen.png" width="600">
+<img src="Images/openingScreen.png" width="600">
