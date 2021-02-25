@@ -12,4 +12,6 @@ When collision occurs, press space to play again and high score will be recorded
 the high score is no longer recorded. 
 
 Game over screen:
-<img src="Images/gameover.png" width="600">
+<img src="Images/gameOver.png" width="600">
+
+Learned basics of OOP with this project, hope you enjoy! 
