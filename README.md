@@ -15,4 +15,4 @@ Game over screen:
 
 <img src="Images/gameOver.png" width="600">
 
-Learned basics of OOP with this project, hope you enjoy! 
+Learned the basics of OOP with this project, hope you enjoy! 
