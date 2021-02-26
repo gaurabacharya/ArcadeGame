@@ -6,7 +6,7 @@ pygame.font.init()
 #size of screen
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
-SCREEN_TITLE = 'Beard Run'
+SCREEN_TITLE = 'Flappy Beard'
 #colours according to RGB codes
 WHITE_COLOUR = (255,255,255)
 BLACK_COLOUR = (0,0,0)
@@ -37,12 +37,12 @@ class Game:
         pygame.display.set_caption(title)
     
 
-    def run_game_loop(self):
+    def run_game_loop(self, high_score):
         game_active = True
         game_screen_over = False
         direction = 0
         score = 0
-        high_score = 0
+
 
         player_character = PlayerCharacter('Images/jharden.png', 300, 380, 100, 100)
         ground = GroundMovement('Images/ground.png',0, 700, 1600, 100)
@@ -71,10 +71,11 @@ class Game:
                     elif event.key == pygame.K_DOWN and game_active:
                         direction = -1
                     if event.key == pygame.K_SPACE and game_active == False:
-                        game_active = True 
                         razor_list.clear()
                         player_character.rect.center = (350, 430)
                         game_score.score = 0
+                        new_game = Game(SCREEN_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT)
+                        new_game.run_game_loop(high_score)
                 elif event.type == pygame.KEYUP:
                     if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                         direction = -1
@@ -124,7 +125,6 @@ class GameObject:
         else:
             self.harden = 0
         
-
         self.x_pos = x
         self.y_pos = y
 
@@ -157,7 +157,7 @@ class PlayerCharacter(GameObject):
             if self.rect.colliderect(r):
                 return False
         
-        if self.rect.top <= -100 or self.rect.bottom >= 700:
+        if self.rect.top <= -200 or self.rect.bottom >= 800:
             return False
         
         return True
@@ -177,10 +177,7 @@ class RazorMovement:
 
     def __init__(self, image_path):
         object_image = pygame.image.load(image_path)
-
         object_image = pygame.transform.scale(object_image, (100, 350) )
-        #scale up
-        #self.image = pygame.transform.scale2x(object_image)
         self.image = object_image
     
 
@@ -188,7 +185,6 @@ class RazorMovement:
         razor_height = [50, 150, 250, 350]
         random_razor_pos = random.choice(razor_height)
         razor = self.image.get_rect(midtop = (1000,random_razor_pos) )
-        #top_razor = self.image.get_rect(midbottom = (1000, random_razor_pos - 300))
         return razor
     
     def move_razors(self, razors):
@@ -237,7 +233,7 @@ class DisplayScore():
 
 
 new_game = Game(SCREEN_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT)
-new_game.run_game_loop()
+new_game.run_game_loop(0)
 
 #Quit pygame and the program
 pygame.quit()
@@ -249,7 +245,3 @@ quit()
 
 
 
-#pygame.draw.rect(game_screen, RED_COLOUR, [380, 380, 20, 20])
-#pygame.draw.circle(game_screen, GREEN_COLOUR, (390, 370), 10)
-
-#game_screen.blit(player_image, (375,375))
