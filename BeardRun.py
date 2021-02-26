@@ -43,7 +43,6 @@ class Game:
         direction = 0
         score = 0
 
-
         player_character = PlayerCharacter('Images/jharden.png', 300, 380, 100, 100)
         ground = GroundMovement('Images/ground.png',0, 700, 1600, 100)
         game_over_face = GameObject('Images/BeardlessJHarden.png', 250, 200, 300, 300)
@@ -238,7 +237,6 @@ new_game.run_game_loop(0)
 #Quit pygame and the program
 pygame.quit()
 quit()
-
 
 
 
